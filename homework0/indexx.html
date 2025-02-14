@@ -1,0 +1,85 @@
+
+<head>恭喜你成為這網頁的第1000000位訪客!
+
+
+</head>
+<button>為了慶祝如此重大的時刻我們為你準備了禮物!!
+
+
+		請點以下連結享受這特殊的榮耀!!!
+		<a href="file:///C:/Users/user/Desktop/net.html">點擊這裡</a>
+</button>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩帶特效</title>
+    <style>
+        /* CSS 樣式 */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background-color: #ff6347; /* 初始顏色，會隨機變 */
+            animation: fall 4s infinite ease-in-out;
+            opacity: 0.8;
+            transform-origin: center;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti"></div>
+
+    <script>
+        window.onload = function() {
+            let confettiContainer = document.querySelector('.confetti');
+            let numConfetti = 150; // 設置彩帶數量
+
+            for (let i = 0; i < numConfetti; i++) {
+                let confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+
+                // 隨機顏色
+                let colors = ['#ff6347', '#4caf50', '#2196f3', '#ffeb3b', '#9c27b0'];
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                // 隨機位置
+                confettiPiece.style.left = Math.random() * 100 + 'vw'; // 隨機左右位置
+                confettiPiece.style.animationDuration = Math.random() * 3 + 2 + 's'; // 隨機動畫持續時間
+
+                confettiContainer.appendChild(confettiPiece);
+            }
+        };
+    </script>
+</body>
+</html>
